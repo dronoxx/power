@@ -3,8 +3,7 @@
 
 (deftype Relay [pin]
   Device
-  (connect [this] this)
-  (disconnect [this])
+  (close [this])
   (transmit [this command] command))
 
 (defn make-relay-device

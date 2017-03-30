@@ -1,5 +1,5 @@
 (ns power.core
-  (:require [power.device :refer [transmit closeable-device]]))
+  (:require [power.device :refer [transmit]]))
 
 (def ^:dynamic *device* nil)
 
@@ -16,9 +16,8 @@
 (defmacro with-device
   [device & body]
   `(binding [*device* ~device]
-     (with-open [device# (closeable-device *device*)]
-       (do
-         ~@body))))
+     (with-open [device# *device*]
+       ~@body)))
 
 (defn power
   [command time interval]
