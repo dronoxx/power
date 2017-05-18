@@ -3,4 +3,5 @@
   :url "https://github.com/ieer/power"
   :license {:name "Eclipse Public License"
             :url "https://github.com/ieer/power/blob/master/LICENSE"}
-  :dependencies [[org.clojure/clojure "1.8.0"]])
+  :dependencies [[org.clojure/clojure "1.8.0"]
+                 [clj-gpio "0.2.0"]])

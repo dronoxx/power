@@ -21,7 +21,7 @@
 
 (defn power
   [command time interval]
-  {:pre [(not (nil? *device*)) (contains? (keys interval-values) interval)]}
+  {:pre [(keyword? command) (not (nil? *device*)) (contains? (keys interval-values) interval)]}
   (when-let [device *device*]
     (future
       (wait time interval)
