@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ieer/power.svg?branch=master)](https://travis-ci.org/ieer/power)
+
 # power
 
 Library to power devices in rpi using clojure

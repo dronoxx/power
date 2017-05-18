@@ -2,5 +2,5 @@
   :description "Library to power devices in rpi using clojure"
   :url "https://github.com/ieer/power"
   :license {:name "Eclipse Public License"
-            :url "http://www.eclipse.org/legal/epl-v10.html"}
+            :url "https://github.com/ieer/power/blob/master/LICENSE"}
   :dependencies [[org.clojure/clojure "1.8.0"]])
