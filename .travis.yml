@@ -2,9 +2,9 @@ language: clojure
 jdk:
   - oraclejdk7
 
-#before_deploy:
-  #- lein jar
-  #- lein deploy releases
+before_deploy:
+  - lein jar
+  - lein deploy releases
 #deploy:
 #  provider: releases
 #  api_key: "${GH_TOKEN}"
