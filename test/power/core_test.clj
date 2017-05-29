@@ -1,7 +1,6 @@
 (ns power.core-test
   (:require [clojure.test :refer :all]
             [power.core :refer :all]
-            [power.device :refer :all]
             [power.relay :refer :all])
   (:gen-class))
 
