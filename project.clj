@@ -6,4 +6,5 @@
   :repl-options {:timeout 120000}
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [clj-gpio "0.2.0"]]
+  :aot :all
   :main power.core-test)
