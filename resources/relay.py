@@ -1,6 +1,8 @@
 import RPi.GPIO as GPIO
 import sys
 
+GPIO.setwarnings(False)
+
 DEVICE_PIN=16
 
 GPIO.setmode(GPIO.BCM)
