@@ -1,4 +1,4 @@
-(ns power.relay
+(ns power.clj-relay
   (:require [gpio.core :refer [open-port set-direction! write-value! close!]])
   (:import (power.device Device)))
 
