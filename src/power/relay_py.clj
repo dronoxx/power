@@ -1,5 +1,5 @@
 (ns power.relay-py
-  (:require [clojure.java.shell :only [sh]]
+  (:require [clojure.java.shell :refer [sh]]
             [clojure.java.io :as io]))
 
 (def python-path "/usr/bin/python")
