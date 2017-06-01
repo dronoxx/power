@@ -8,5 +8,5 @@
 (defn transmit
   [option]
   (let [option (-> (str option) .toUpperCase)
-        py-resource (io/resource python-file)]
-    py-resource))
+        py-resource (-> python-file io/resource .getPath)]
+    (sh python-path py-resource option)))
