@@ -14,8 +14,8 @@ OPTIONS = {
 }
 
 if len(sys.argv) > 1:
-    option = OPTIONS[sys.argv[1]]
-    if option:
-    	GPIO.output(DEVICE_PIN,option)
-    else:
-        GPIO.cleanup()
+    try:
+    	GPIO.output(DEVICE_PIN,OPTIONS[sys.argv[1]])
+    except KeyError,e:
+        pass
+        

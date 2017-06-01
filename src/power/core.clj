@@ -9,9 +9,9 @@
    :minute 60
    :hour   3600})
 
-(defn- wait
+(defn- time-to-wait
   [time interval]
-  (Thread/sleep (* 1000 time (interval interval-values))))
+  (* 1000 time (interval interval-values)))
 
 (defmacro with-device
   [device & body]
@@ -21,10 +21,11 @@
 
 (defn power
   [command time interval]
-  {:pre [(keyword? command) (not (nil? *device*)) (contains? (keys interval-values) interval)]}
   (when-let [device *device*]
-    (future
-      (wait time interval)
-      (transmit device command))))
+    (let [time-to-wait (time-to-wait time interval)
+          command (future
+                    (Thread/sleep time-to-wait)
+                    (transmit device command))]
+      @command)))
 
 

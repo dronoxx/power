@@ -23,4 +23,4 @@
 
 (defn make-relay-device
   []
-  Relay.)
+  (Relay.))
