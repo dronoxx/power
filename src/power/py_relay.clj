@@ -14,7 +14,7 @@
   [resource]
   (slurp (io/resource resource)))
 
-(defn- create-temp-file
+(defn- create-resource-file
   [dest-file content]
   (let [temp-file (io/file (str destination-resource-dir dest-file))]
     (do
@@ -40,5 +40,5 @@
 (defn make-relay-device
   []
   (if-let [dev-resource-content (resource-content device-resource)]
-    (let [driver-file (create-temp-file device-resource dev-resource-content)]
+    (let [driver-file (create-resource-file device-resource dev-resource-content)]
       (Relay. driver-file))))
