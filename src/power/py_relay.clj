@@ -4,23 +4,41 @@
   (:import (power.device Device)))
 
 (def ^:private python-path "/usr/bin/python")
-(def ^:private python-file "relay.py")
+(def ^:private device-resource "relay.py")
+(def ^:private destination-resource-dir "/tmp/rpi/devices/")
 
 (def ^:private commands {:on  :high
-                         :off :low
-                         :close :close})
+                         :off :low})
+
+(defn- resource-content
+  [resource]
+  (slurp (io/resource resource)))
+
+(defn- create-temp-file
+  [dest-file content]
+  (let [temp-file (io/file (str destination-resource-dir dest-file))]
+    (do
+      (io/make-parents temp-file)
+      (spit temp-file content)
+      temp-file)))
+
+(defn- cleanup-resource-file
+  [resource-file]
+  (io/delete-file resource-file true))
 
 (defn- do-command
-  [command]
+  [driver-file command]
   (let [option (-> commands command name .toUpperCase)
-        py-resource (-> python-file io/resource .getPath)]
+        py-resource (-> driver-file io/file .getPath)]
     (sh python-path py-resource option)))
 
-(deftype Relay []
+(deftype Relay [driver-file]
   Device
-  (close [this] (do-command :close))
-  (transmit [this command] (do-command command)))
+  (close [this] (cleanup-resource-file driver-file))
+  (transmit [this command] (do-command driver-file command)))
 
 (defn make-relay-device
   []
-  (Relay.))
+  (if-let [dev-resource-content (resource-content device-resource)]
+    (let [driver-file (create-temp-file device-resource dev-resource-content)]
+      (Relay. driver-file))))
