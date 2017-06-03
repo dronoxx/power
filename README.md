@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/ieer/power.svg?branch=master)](https://travis-ci.org/ieer/power)
+[![Build Status](https://travis-ci.org/ieer/power.svg?branch=clj-gpio)](https://travis-ci.org/ieer/power)
 
 # power
 
