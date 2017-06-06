@@ -5,6 +5,4 @@
             :url "https://github.com/ieer/power/blob/master/LICENSE"}
   :repl-options {:timeout 120000}
   :dependencies [[org.clojure/clojure "1.8.0"]]
-  :profiles {
-             :uberjar {:aot :all}}
-  :main power.main)
+  :profiles {:uberjar {:aot :all}})

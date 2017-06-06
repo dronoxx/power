@@ -30,7 +30,8 @@
   [driver-file command]
   (let [option (-> commands command name .toUpperCase)
         py-resource (-> driver-file io/file .getPath)]
-    (sh python-path py-resource option)))
+    (sh python-path py-resource option)
+    true))
 
 (deftype Relay [driver-file]
   Device
