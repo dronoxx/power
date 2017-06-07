@@ -5,7 +5,7 @@ jdk:
 before_deploy:
   - lein jar
   - lein deploy releases
-#deploy:
+deploy:
   provider: releases
   api_key: "${GH_TOKEN}"
   file_glob: true
