@@ -27,19 +27,19 @@
   (io/delete-file resource-file true))
 
 (defn- do-command
-  [driver-file command]
+  [driver-file device-pin command]
   (let [option (-> commands command name .toUpperCase)
         py-resource (-> driver-file io/file .getPath)]
-    (sh python-path py-resource option)
+    (sh python-path py-resource device-pin option)
     true))
 
-(deftype Relay [driver-file]
+(deftype Relay [driver-file device-pin]
   Device
   (close [this] (cleanup-resource-file driver-file))
-  (transmit [this command] (do-command driver-file command)))
+  (transmit [this command] (do-command driver-file device-pin command)))
 
 (defn make-relay-device
-  []
+  [device-pin]
   (if-let [dev-resource-content (resource-content device-resource)]
     (let [driver-file (create-resource-file device-resource dev-resource-content)]
-      (Relay. driver-file))))
+      (Relay. driver-file device-pin))))
