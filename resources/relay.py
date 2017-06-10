@@ -5,14 +5,14 @@ GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 
 OPTIONS = {
-    'HIGH': GPIO.HIGH,
-    'LOW': GPIO.LOW
+    'ON': GPIO.LOW,
+    'OFF': GPIO.HIGH
 }
 
 if len(sys.argv) > 2:
     try:
-        DEVICE_PIN = sys.argv[1]
+        DEVICE_PIN = int(sys.argv[1])
         GPIO.setup(DEVICE_PIN, GPIO.OUT)
         GPIO.output(DEVICE_PIN, OPTIONS[sys.argv[2]])
-    except KeyError, e:
+    except Exception, e:
         pass

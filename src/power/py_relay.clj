@@ -7,9 +7,6 @@
 (def ^:private device-resource "relay.py")
 (def ^:private destination-resource-dir "/tmp/rpi/devices/")
 
-(def ^:private commands {:on  :high
-                         :off :low})
-
 (defn- resource-content
   [resource]
   (slurp (io/resource resource)))
@@ -28,7 +25,7 @@
 
 (defn- do-command
   [driver-file device-pin command]
-  (let [option (-> commands command name .toUpperCase)
+  (let [option (-> command name .toUpperCase)
         py-resource (-> driver-file io/file .getPath)]
     (sh python-path py-resource device-pin option)
     true))
