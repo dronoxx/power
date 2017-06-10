@@ -1,4 +1,4 @@
-(defproject power "0.3.0"
+(defproject power "0.4.0"
   :description "Library to power devices in rpi using clojure"
   :url "https://github.com/ieer/power"
   :license {:name "Eclipse Public License"

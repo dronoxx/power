@@ -32,7 +32,7 @@
 
 (deftype Relay [driver-file device-pin]
   Device
-  (close [this] (cleanup-resource-file driver-file))
+  (close [this] true)
   (transmit [this command] (do-command driver-file device-pin command)))
 
 (defn make-relay-device
