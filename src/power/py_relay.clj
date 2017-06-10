@@ -27,7 +27,7 @@
   [driver-file device-pin command]
   (let [option (-> command name .toUpperCase)
         py-resource (-> driver-file io/file .getPath)]
-    (sh python-path py-resource device-pin option)
+    (sh python-path py-resource (str device-pin) option)
     true))
 
 (deftype Relay [driver-file device-pin]

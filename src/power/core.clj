@@ -20,12 +20,14 @@
        ~@body)))
 
 (defn power
-  [command time interval]
-  (when-let [device *device*]
-    (let [time-to-wait (time-to-wait time interval)
-          command (future
-                    (Thread/sleep time-to-wait)
-                    (transmit device command))]
-      @command)))
+  ([command]
+   (when-let [device *device*]
+     (transmit device command)))
+  ([command time interval]
+   (let [time-to-wait (time-to-wait time interval)
+         command (future
+                   (Thread/sleep time-to-wait)
+                   (power command))]
+     @command)))
 
 
