@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/ieer/power.svg?branch=master)](https://travis-ci.org/ieer/power)
+[![Clojars Project](https://img.shields.io/clojars/v/power.svg)](https://clojars.org/power)
 
 # power
 
